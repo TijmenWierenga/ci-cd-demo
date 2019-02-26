@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  app:
+    image: localhost:5000/xs4all/app:${TAG-latest}
+    ports:
+      - 80:80
+    deploy:
+      replicas: 10
+      update_config:
+        parallelism: 2
+        delay: 10s
+      rollback_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
