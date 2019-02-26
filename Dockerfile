@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:experimental
-
 # Use official composer library to move the composer binary to the PHP container
 FROM composer:1.8 AS composer
 
@@ -35,7 +33,7 @@ COPY --chown=www-data composer.json composer.lock symfony.lock /var/www/html/
 # since even when you break the cache by adding/removing a composer package, all previously installed
 # packages are served from the mounted cache.
 ENV COMPOSER_CACHE_DIR=/var/www/.composer
-RUN --mount=type=cache,target=/tmp composer install --no-autoloader --no-scripts
+RUN composer install --no-autoloader --no-scripts
 
 # Copy the rest of the source code to the container. Now, if source files are changed, the cache-layer
 # breaks here and the only the 'composer dump-autoload' command will have to run again.
