@@ -29,7 +29,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Deploying..."
+                sh 'docker stack deploy -c docker-compose.yml app'
             }
         }
     }
