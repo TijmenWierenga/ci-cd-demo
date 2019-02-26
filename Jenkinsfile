@@ -17,7 +17,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'docker run --rm xs4all/app:${TAG} bin/phpunit'
+                sh 'docker run --rm localhost:5000/xs4all/app:${TAG} bin/phpunit'
             }
         }
 
