@@ -17,7 +17,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'docker run --rm -v $(pwd):/var/www/html -u www-data xs4all/app:${TAG} bin/phpunit'
+                sh 'docker run --rm xs4all/app:${TAG} bin/phpunit'
             }
         }
     }
