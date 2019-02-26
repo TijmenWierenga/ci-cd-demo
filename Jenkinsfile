@@ -1,11 +1,11 @@
 pipeline {
-    agent { 
-        label 'docker' 
+    agent {
+        label 'docker'
     }
 
     environment {
         COMPOSE_PROJECT_NAME = "${env.JOB_NAME}_${env.BUILD_NUMBER}"
-        TAG_ID="1.${env.BUILD_NUMBER}"
+        TAG="1.${env.BUILD_NUMBER}"
     }
 
     stages {
