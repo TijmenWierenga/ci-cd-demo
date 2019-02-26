@@ -11,13 +11,25 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t xs4all/app:${TAG} .'
+                sh 'docker build -t localhost:5000/xs4all/app:${TAG} .'
             }
         }
 
         stage('Test') {
             steps {
                 sh 'docker run --rm xs4all/app:${TAG} bin/phpunit'
+            }
+        }
+
+        stage('Push') {
+            steps {
+                sh 'docker push localhost:5000/xs4all/app:${TAG}'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying..."
             }
         }
     }
