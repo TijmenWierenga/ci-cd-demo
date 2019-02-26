@@ -48,4 +48,4 @@ ENV APP_ENV=prod
 # Apache can only be started as root
 USER root
 
-HEALTHCHECK CMD curl -f http://localhost/health || exit 1
+HEALTHCHECK --interval=10s --timeout=2s CMD curl -f http://localhost/health || exit 1
